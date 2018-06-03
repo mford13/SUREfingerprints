@@ -50,3 +50,11 @@
 > DFOdata <- subset(fprints, fprints$treatment == "DFO")
 > Ndata <-subset (fprints, fprints$treatment == "Ninhydrin")
 > DFONdata <- subset (fprints, fprints$treatment == "DFO + Ninhydrin")
+
+
+> D0 <- subset(fprints, fprints$donor == "0")
+> D1 <- subset (fprints, fprints$donor == "1")
+> D2 <- subset (fprints, fprints$donor == "2")
+> D3 <- subset (fprints, fprints$donor == "3")
+> D4 <- subset (fprints, fprints$donor == "4")
+> D5 <- subset (fprints, fprints$donor == "5")
