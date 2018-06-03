@@ -45,3 +45,8 @@
   DFO             20 11 22 14  3
   Ninhydrin       30 14 12  9  5
   DFO + Ninhydrin 47 10 12  1  0
+  
+> mpdata <- subset(fprints, fprints$treatment == "Magnetic Powder")
+> DFOdata <- subset(fprints, fprints$treatment == "DFO")
+> Ndata <-subset (fprints, fprints$treatment == "Ninhydrin")
+> DFONdata <- subset (fprints, fprints$treatment == "DFO + Ninhydrin")
