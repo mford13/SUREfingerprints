@@ -61,3 +61,6 @@
 
 > FP <- subset (D0, D0$Score.1 > 0 | D0$Score.2 > 0 | D0$Score.3 > 0 | D0$Score.4 > 0)
 > View(FP)
+
+> TN <-subset(fprints, fprints$Score.1 == 0 & fprints$Score.2 == 0 & fprints$Score.3 == 0 & fprints$Score.4 == 0)
+> View(TN)
