@@ -58,3 +58,6 @@
 > D3 <- subset (fprints, fprints$donor == "3")
 > D4 <- subset (fprints, fprints$donor == "4")
 > D5 <- subset (fprints, fprints$donor == "5")
+
+> FP <- subset (D0, D0$Score.1 > 0 | D0$Score.2 > 0 | D0$Score.3 > 0 | D0$Score.4 > 0)
+> View(FP)
