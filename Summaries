@@ -1,1 +1,47 @@
+> summary(printratings_dat$Score.1)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  0.000   0.000   1.000   1.132   2.000   4.000 
+> summary(printratings_dat$Score.2)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  0.000   0.000   1.000   1.325   2.250   4.000 
+> summary(printratings_dat$Score.3)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  0.000   0.000   1.000   1.318   2.000   4.000 
+  > summary(printratings_dat$Score.4)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  0.000   0.000   1.000   1.268   2.000   4.000 
+> barplot(table(printratings_dat$Score.1))
+> barplot(table(printratings_dat$Score.2))
+> barplot(table(printratings_dat$Score.3))
+> barplot(table(printratings_dat$Score.4))
 
+> table(printratings_dat$treatment, printratings_dat$Score.1)
+                 
+                   0  1  2  3  4
+  Magnetic Powder 24 11 15 16  4
+  DFO             20 17 21 11  1
+  Ninhydrin       29 17 12 10  2
+  DFO + Ninhydrin 46 13  9  2  0
+> table(printratings_dat$treatment, printratings_dat$Score.2)
+                 
+                   0  1  2  3  4
+  Magnetic Powder 18 15  7 23  7
+  DFO             20 10 22 17  1
+  Ninhydrin       29 14  9  9  9
+  DFO + Ninhydrin 48  9  9  2  2
+
+> table(printratings_dat$treatment, printratings_dat$Score.3)
+                 
+                   0  1  2  3  4
+  Magnetic Powder 18 13 10 23  6
+  DFO             20  7 22 20  1
+  Ninhydrin       31  9 15 10  5
+  DFO + Ninhydrin 47  9 12  2  0
+  
+> table(printratings_dat$treatment, printratings_dat$Score.4)
+                 
+                   0  1  2  3  4
+  Magnetic Powder 17 16 11 18  8
+  DFO             20 11 22 14  3
+  Ninhydrin       30 14 12  9  5
+  DFO + Ninhydrin 47 10 12  1  0
