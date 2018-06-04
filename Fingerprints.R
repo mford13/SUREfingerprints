@@ -123,6 +123,22 @@ qqline(mSvD0$residuals)
 
 kruskal.test(no0$donor, no0$meanScore)
 
+# DONORS (subset)
+levels(as.factor(donor))
+d0 = subset(p, donor == 0)
+d1 = subset(p, donor == 1)
+d2 = subset(p, donor == 2)
+d3 = subset(p, donor == 3)
+d4 = subset(p, donor == 4)
+d5 = subset(p, donor == 5)
+
+d0.avg = mean(d0$meanScore) # sixth
+d1.avg = mean(d1$meanScore) # fourth
+d2.avg = mean(d2$meanScore) # fifth 
+d3.avg = mean(d3$meanScore) # third 
+d4.avg = mean(d4$meanScore) # second 
+d5.avg = mean(d5$meanScore) # first highest
+
 # TREATMENTS (subset)
 levels(as.factor(treatment))
 MP = subset(p, treatment == "Magnetic Powder")
@@ -169,10 +185,11 @@ negativeWeight = subset(p, printWeight < 0)
 nrow(negativeWeight)
 
 # Breakdown of negative weights
-#   Magnetic Powder: 21 -> 30%
-#   DFO: 55 -> 79%
-#   Ninhydrin: 0 -> 0%
-#   DFO + Ninhydrin: 1 -> 1%
+#   Magnetic Powder: 21 -> 30% of MP had negative weights
+#   DFO: 55 -> 79% of DFO had negative weights
+#   Ninhydrin: 0 -> 0% of N had negative weights
+#   DFO + Ninhydrin: 1 -> 1% of DFON had negative weights
+#   About 71% of negative weights can be attributed to DFO-treated fingerprints. 
 nw.MP = nrow(subset(negativeWeight, treatment == "Magnetic Powder"))
 nw.DFO = nrow(subset(negativeWeight, treatment == "DFO")) 
 nw.N = nrow(subset(negativeWeight, treatment == "Ninhydrin"))
@@ -199,8 +216,9 @@ sc4 = subset(p, donor == 0 & Score.4 > 0, select = c(donor, Score.4))
 nrow(sc4)
 
 # Mean Scores had 8 false positives
-mS = subset(p, donor == 0 & meanScore > 0, select = c(donor, meanScore))
+mS = subset(p, donor == 0 & meanScore > 0, select = c(donor, treatment, meanScore))
 nrow(mS)
+View(mS)
 
 # remove false positives for new dataset
 nFP = subset(p, donor == 0 & meanScore == 0 | donor != 0)
