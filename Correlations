@@ -1,3 +1,28 @@
 Weight of print vs mean score
 > plot(x=fprints$p.weight, y=fprints$mean.score, type = "p")
-No discernable correlations
+cor(x=fprints$p.weight, y=fprints$mean.score)
+[1] -0.3523314
+
+> plot(x=mpdata$p.weight, y=mpdata$mean.score, type = "p")
+cor(x=mpdata$p.weight, y=mpdata$mean.score)
+[1] -0.3920956
+
+> plot(x=Ndata$p.weight, y=Ndata$mean.score, type = "p")
+> cor(x=Ndata$p.weight, y=Ndata$mean.score)
+[1] -0.3256665
+
+> plot(x=DFOdata$p.weight, y=DFOdata$mean.score, type = "p")
+> cor(x=DFOdata$p.weight, y=DFOdata$mean.score)
+[1] -0.4155963
+
+> plot(x=DFONdata$p.weight, y=DFONdata$mean.score, type = "p")
+> cor(x=DFONdata$p.weight, y=DFONdata$mean.score)
+[1] -0.1816686
+
+> sapply(fprints, class)
+        bag      finger       donor         day     weight1     weight2 
+  "numeric" "character"    "factor"   "numeric"   "numeric"   "numeric" 
+    weight3   treatment     printed     Score.1     Score.2     Score.3 
+  "numeric"    "factor"    "factor"   "numeric"   "numeric"   "numeric" 
+    Score.4  mean.score    p.weight 
+  "numeric"   "numeric"   "numeric" 
