@@ -1,0 +1,3 @@
+Weight of print vs mean score
+> plot(x=fprints$p.weight, y=fprints$mean.score, type = "p")
+No discernable correlations
