@@ -1,0 +1,5 @@
+P.weight = weight of developed print
+> fprints["p.weight"] = (fprints$weight3 - fprints$weight2)
+
+mean.score = average of all 4 scores
+> fprints["mean.score"] = (fprints$Score.1 + fprints$Score.2 + fprints$Score.3 + fprints$Score.4)/4
