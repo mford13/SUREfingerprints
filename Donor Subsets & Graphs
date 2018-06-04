@@ -1,0 +1,47 @@
+#Donor vs Mean Score SatterPlot
+ggplot(printratings_dat, aes(x=donor, y=mean.score)) + geom_point()
+
+#Donor vs Mean Score BarGraph
+ggplot(printratings_dat, aes(x=donor, y=mean.score)) + geom_bar(stat="identity")
+
+#Donor5 Subset and Graphs
+Donor5 <- subset(printratings_dat, printratings_dat$donor == "5")
+ggplot(Donor5, aes(x=Score.1)) + geom_bar()
+ggplot(Donor5, aes(x=Score.2)) + geom_bar()
+ggplot(Donor5, aes(x=Score.3)) + geom_bar()
+ggplot(Donor5, aes(x=Score.4)) + geom_bar()
+
+#Donor2 Subset and Graphs
+Donor2 <- subset(printratings_dat, printratings_dat$donor == "2")
+ggplot(Donor2, aes(x=Score.1)) + geom_bar()
+ggplot(Donor2, aes(x=Score.2)) + geom_bar()
+ggplot(Donor2, aes(x=Score.3)) + geom_bar()
+ggplot(Donor2, aes(x=Score.4)) + geom_bar()
+
+#Donor1 Subset and Graphs
+Donor1 <- subset(printratings_dat, printratings_dat$donor == "1")
+ggplot(Donor1, aes(x=Score.1)) + geom_bar()
+ggplot(Donor1, aes(x=Score.2)) + geom_bar()
+ggplot(Donor1, aes(x=Score.3)) + geom_bar()
+ggplot(Donor1, aes(x=Score.4)) + geom_bar()
+
+#Donor3 Subset and Graphs
+Donor3 <- subset(printratings_dat, printratings_dat$donor == "3")
+ggplot(Donor3, aes(x=Score.1)) + geom_bar()
+ggplot(Donor3, aes(x=Score.2)) + geom_bar()
+ggplot(Donor3, aes(x=Score.3)) + geom_bar()
+ggplot(Donor3, aes(x=Score.4)) + geom_bar()
+
+#Donor4 Subset and Graphs
+Donor4 <- subset(printratings_dat, printratings_dat$donor == "4")
+ggplot(Donor4, aes(x=Score.1)) + geom_bar()
+ggplot(Donor4, aes(x=Score.2)) + geom_bar()
+ggplot(Donor4, aes(x=Score.3)) + geom_bar()
+ggplot(Donor4, aes(x=Score.4)) + geom_bar()
+
+#Donor Mean Score vs Print Weight Scatterplots
+ggplot(Donor5, aes(x=p.weight, y=mean.score)) + geom_point()
+ggplot(Donor2, aes(x=p.weight, y=mean.score)) + geom_point()
+ggplot(Donor1, aes(x=p.weight, y=mean.score)) + geom_point()
+ggplot(Donor3, aes(x=p.weight, y=mean.score)) + geom_point()
+ggplot(Donor4, aes(x=p.weight, y=mean.score)) + geom_point()
