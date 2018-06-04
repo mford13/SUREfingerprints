@@ -3,3 +3,19 @@ P.weight = weight of developed print
 
 mean.score = average of all 4 scores
 > fprints["mean.score"] = (fprints$Score.1 + fprints$Score.2 + fprints$Score.3 + fprints$Score.4)/4
+
+mpdata additions
+> mpdata["mean.score"] = (mpdata$Score.1 + mpdata$Score.2 + mpdata$Score.3 + mpdata$Score.4)/4
+> mpdata["p.weight"] = (mpdata$weight3 - mpdata$weight2)
+
+Ndata additions
+> Ndata["mean.score"] = (Ndata$Score.1 + Ndata$Score.2 + Ndata$Score.3 + Ndata$Score.4)/4
+> Ndata["p.weight"] = (Ndata$weight3 - Ndata$weight2)
+
+DFOdata additions
+> DFOdata["mean.score"] = (DFOdata$Score.1 + DFOdata$Score.2 + DFOdata$Score.3 + DFOdata$Score.4)/4
+> DFOdata["p.weight"] = (DFOdata$weight3 - DFOdata$weight2)
+
+DFONdata additions
+> DFONdata["mean.score"] = (DFONdata$Score.1 + DFONdata$Score.2 + DFONdata$Score.3 + DFONdata$Score.4)/4
+> DFONdata["p.weight"] = (DFONdata$weight3 - DFONdata$weight2)
