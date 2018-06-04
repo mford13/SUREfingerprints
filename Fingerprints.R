@@ -16,6 +16,7 @@
 # Score.3 and Score.4 are defined similarly. 
 
 library(GGally)
+library(ggplot2)
 load("C:/Users/nmajo/Desktop/CMU SURE/printratings_dat.Rda")
 p = printratings_dat
 # View(p)
@@ -73,6 +74,12 @@ kruskal.test(finger, meanScore)
 #   (p-value = 8.605e-6)
 boxplot(meanScore ~ treatment, xlab = "Treatment", ylab = "Mean Score", 
         main = "Average Fingerprint Quality Score v. Treatment")
+# prettier boxplot
+ggplot(p, aes(x = treatment, y = meanScore)) + 
+  labs(title = "Average Fingerprint Quality Score v. Treatment",
+       x = "Treatment", y = "Averager Fingerprint Quality Score") + 
+  geom_boxplot()
+
 mSvT = aov(meanScore ~ treatment)
 anova(mSvT)
 
@@ -285,50 +292,3 @@ ggpairs(p,
 #     and donor vs. mean score
 #   Respective scores based on distortion (weight1 and weight2)
 #   Machine Learning: minutiae of fingerprints v. scores
-
-# Questions
-# 1) How do distortions (weights and images) affect scores? 
-#     - need to determine threshold for distortion. 
-#     - look at differences between donor 5 and donor 2 to find threshold. Change image
-#       quality of higher scoring prints to find threshold of 0. 
-#     - use machine learning to create a rubric for what contributes to different 
-#       scores. Use false positives and true negatives against this rubric. 
-#       Training data is true positives
-
-# Where do we go from here?
-# PART I
-# Discrimination strength:
-#   - image quality of donor 5 vs. donor 2, donor 5 vs. donor 1, donor 5 vs. donor 3, 
-#     donor 5 vs. donor 4. Sharpest differences to dullest. 
-#   - new subset = only one score is equal to 0 (mostly positive). Used to compare with
-#     true positive subset to find threshold. 
-#   - treatment: respective quality vs. treatment (Think On It)
-
-# Distortions: 
-#   - weight discrepancy's effects on scores. Looking across donors and treatments. 
-#     DFO had higher weights and lower scores. 
-#   - images
-#   - distortion metric
-
-# PART 2
-# Consistency of Markup
-#   - what caused variability in scores in images
-#   - defining rubric with machine learning (false posiives and false negatives)
-
-# Treatment Bias
-#   - treatment bias within scorer (anova)
-
-# Image Quality
-#   - based upon the former 3 results, consider machine learning for image quality.
-#   Compare to examiner's scores. 
-
-# TO-DO
-# Look at 35 false negatives (true negatives that didn't come from donor 0)
-# true positives where no score = 0
-# mostly positive subset (only one score = 0)
-# review NIST Special Publication 1151
-# donor 2 vs weight --> lower scores
-
-# OUTLINE
-# average weight doesn't mean anything
-# negative weights
