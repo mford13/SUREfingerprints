@@ -259,6 +259,9 @@ ggpairs(p,
         columns = c("fingerNumeric", "donor", "meanScore"), 
         lower = list(continuous = "smooth"))
 
+############################ End of statistical analysis ############################
+
+
 # FURTHER ANALYSIS
 #   general contrasts/multiple comparisons for treatment vs. mean score 
 #     and donor vs. mean score
