@@ -1,8 +1,8 @@
 #Donor vs Mean Score SatterPlot
-ggplot(printratings_dat, aes(x=donor, y=mean.score)) + geom_point()
+ggplot(printratings_dat, aes(x=donor, y=mean.score)) + geom_point() + labs(title = "Donor vs Mean Score", x = "Donor", y = "Mean Score")
 
 #Donor vs Mean Score BarGraph
-ggplot(printratings_dat, aes(x=donor, y=mean.score)) + geom_bar(stat="identity")
+ggplot(printratings_dat, aes(x=donor, y=mean.score)) + geom_bar(stat="identity") + labs(title = "Total Mean Scores of Donors", x = "Donor", y = "Mean Score Total")
 
 #Donor5 Subset and Graphs
 Donor5 <- subset(printratings_dat, printratings_dat$donor == "5")
