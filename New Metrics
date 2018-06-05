@@ -19,3 +19,7 @@
 #DFONdata additions
 > DFONdata["mean.score"] = (DFONdata$Score.1 + DFONdata$Score.2 + DFONdata$Score.3 + DFONdata$Score.4)/4
 > DFONdata["p.weight"] = (DFONdata$weight3 - DFONdata$weight2)
+
+#Addition of Image Featurization
+> load("img_featurized.R")
+> printrating.dat <- cbind(printratings_dat, img_featurized)
