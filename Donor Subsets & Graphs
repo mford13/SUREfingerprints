@@ -6,42 +6,38 @@ ggplot(printratings_dat, aes(x=donor, y=mean.score)) + geom_bar(stat="identity")
 
 #Donor5 Subset and Graphs
 Donor5 <- subset(printratings_dat, printratings_dat$donor == "5")
-ggplot(Donor5, aes(x=Score.1)) + geom_bar()
-ggplot(Donor5, aes(x=Score.2)) + geom_bar()
-ggplot(Donor5, aes(x=Score.3)) + geom_bar()
-ggplot(Donor5, aes(x=Score.4)) + geom_bar()
+ggplot(Donor5, aes(x=Score.1)) + geom_bar() + labs(title = "Donor 5, Score 1", x = "Score", y = "Frequency of Score")
+ggplot(Donor5, aes(x=Score.2)) + geom_bar() + labs(title = "Donor 5, Score 2", x = "Score", y = "Frequency of Score")
+ggplot(Donor5, aes(x=Score.3)) + geom_bar() + labs(title = "Donor 5, Score 3", x = "Score", y = "Frequency of Score")
+ggplot(Donor5, aes(x=Score.4)) + geom_bar() + labs(title = "Donor 5, Score 4", x = "Score", y = "Frequency of Score")
 
 #Donor2 Subset and Graphs
 Donor2 <- subset(printratings_dat, printratings_dat$donor == "2")
-ggplot(Donor2, aes(x=Score.1)) + geom_bar()
-ggplot(Donor2, aes(x=Score.2)) + geom_bar()
-ggplot(Donor2, aes(x=Score.3)) + geom_bar()
-ggplot(Donor2, aes(x=Score.4)) + geom_bar()
+ggplot(Donor2, aes(x=Score.1)) + geom_bar() + labs(title = "Donor 2, Score 1", x = "Score", y = "Frequency of Score")
+ggplot(Donor2, aes(x=Score.2)) + geom_bar() + labs(title = "Donor 2, Score 2", x = "Score", y = "Frequency of Score")
+ggplot(Donor2, aes(x=Score.3)) + geom_bar() + labs(title = "Donor 2, Score 3", x = "Score", y = "Frequency of Score")
+ggplot(Donor2, aes(x=Score.4)) + geom_bar() + labs(title = "Donor 2, Score 4", x = "Score", y = "Frequency of Score")
 
 #Donor1 Subset and Graphs
 Donor1 <- subset(printratings_dat, printratings_dat$donor == "1")
-ggplot(Donor1, aes(x=Score.1)) + geom_bar()
-ggplot(Donor1, aes(x=Score.2)) + geom_bar()
-ggplot(Donor1, aes(x=Score.3)) + geom_bar()
-ggplot(Donor1, aes(x=Score.4)) + geom_bar()
+ggplot(Donor1, aes(x=Score.1)) + geom_bar() + labs(title = "Donor 1, Score 1", x = "Score", y = "Frequency of Score")
+ggplot(Donor1, aes(x=Score.2)) + geom_bar() + labs(title = "Donor 1, Score 2", x = "Score", y = "Frequency of Score")
+ggplot(Donor1, aes(x=Score.3)) + geom_bar() + labs(title = "Donor 1, Score 3", x = "Score", y = "Frequency of Score")
+ggplot(Donor1, aes(x=Score.4)) + geom_bar() + labs(title = "Donor 1, Score 4", x = "Score", y = "Frequency of Score")
 
 #Donor3 Subset and Graphs
 Donor3 <- subset(printratings_dat, printratings_dat$donor == "3")
-ggplot(Donor3, aes(x=Score.1)) + geom_bar()
-ggplot(Donor3, aes(x=Score.2)) + geom_bar()
-ggplot(Donor3, aes(x=Score.3)) + geom_bar()
-ggplot(Donor3, aes(x=Score.4)) + geom_bar()
+ggplot(Donor3, aes(x=Score.1)) + geom_bar() + labs(title = "Donor 3, Score 1", x = "Score", y = "Frequency of Score")
+ggplot(Donor3, aes(x=Score.2)) + geom_bar() + labs(title = "Donor 3, Score 2", x = "Score", y = "Frequency of Score")
+ggplot(Donor3, aes(x=Score.3)) + geom_bar() + labs(title = "Donor 3, Score 3", x = "Score", y = "Frequency of Score")
+ggplot(Donor3, aes(x=Score.4)) + geom_bar() + labs(title = "donor 3, Score 4", x = "Score", y = "Frequency of Score")
 
 #Donor4 Subset and Graphs
 Donor4 <- subset(printratings_dat, printratings_dat$donor == "4")
-ggplot(Donor4, aes(x=Score.1)) + geom_bar()
-ggplot(Donor4, aes(x=Score.2)) + geom_bar()
-ggplot(Donor4, aes(x=Score.3)) + geom_bar()
-ggplot(Donor4, aes(x=Score.4)) + geom_bar()
+ggplot(Donor4, aes(x=Score.1)) + geom_bar() + labs(title = "Donor 4, Score 1", x = "Score", y = "Frequency of Score")
+ggplot(Donor4, aes(x=Score.2)) + geom_bar() + labs(title = "Donor 4, Score 2", x = "Score", y = "Frequency of Score")
+ggplot(Donor4, aes(x=Score.3)) + geom_bar() + labs(title = "Donor 4, Score 3", x = "Score", y = "Frequency of Score")
+ggplot(Donor4, aes(x=Score.4)) + geom_bar() + labs(title = "Donor 4, Score 4", x = "Score", y = "Frequency of Score")
 
 #Donor Mean Score vs Print Weight Scatterplots
-ggplot(Donor5, aes(x=p.weight, y=mean.score)) + geom_point()
-ggplot(Donor2, aes(x=p.weight, y=mean.score)) + geom_point()
-ggplot(Donor1, aes(x=p.weight, y=mean.score)) + geom_point()
-ggplot(Donor3, aes(x=p.weight, y=mean.score)) + geom_point()
-ggplot(Donor4, aes(x=p.weight, y=mean.score)) + geom_point()
+ggplot(Donor2, aes(x=p.weight, y=mean.score)) + geom_point() + labs(title = "Donor 2 Print Weight Vs Mean Score", x = "Print Weight", y = "Mean Score")
