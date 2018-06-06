@@ -40,4 +40,17 @@ Error: unexpected symbol in "plot(Hdet,main=determinant f6"
 > plot(lab,main="labelled regions")
 > df <- as.data.frame(lab) %>% subset(value>0)
 > View(df)
-> unique(df$value)
+> centers <- ddply(df,.(value),summarise,mx=mean(x),my=mean(y))
+> centers <- dplyr::group_by(df,value) %>% dplyr::summarise(mx=mean(x),my=mean(y))
+> library(dplyr)
+> centers<-ddply(df,.(value), summarise,mx=mean(x),my=mean(y))
+> centers<-dplyr::group_by(df,value) %>%dplyr::summarise(mx=mean(x),my=mean(y))
+> plot(grad.mg)
+get.centers <- function(im,thr="99%")
+{
+    dt <- imhessian(im) %$% { xx*yy - xy^2 } %>% threshold(thr) %>% label
+    as.data.frame(dt) %>% subset(value>0) %>% dplyr::group_by(value) %>% dplyr::summarise(mx=mean(x),my=mean(y))
+}
+
+plot(grad.mg)
+get.centers(grad.mg,"99%") %$% points(mx,my,col="red")
