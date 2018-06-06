@@ -1,0 +1,7 @@
+#Loading Files Imager
+fprint[number] <-load.image(pathname)
+pathname: /Users/Chloe/Desktop/R/Converted FingerprintsPNG/[number].png
+
+plot(fprint[number])
+#HistogramImager
+grayscale(fprint[number]) %>% hist(main="Luminesence Values [number]")
