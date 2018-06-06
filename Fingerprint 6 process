@@ -1,0 +1,43 @@
+> fprint6 <-load.image("/Users/mford2/Desktop/pngthing.png")
+> class(cmg)
+Error: object 'cmg' not found
+> class(fprint6)
+[1] "cimg"         "imager_array" "numeric"     
+> grayscale(fprint6)
+Image. Width: 3040 pix Height: 1596 pix Depth: 1 Colour channels: 1 
+Warning message:
+In grayscale(fprint6) : Image appears to already be in grayscale mode
+> grayscale(fprint6) %>% hist(main="Luminance Values in FPRINT6")
+Warning message:
+In grayscale(fprint6) : Image appears to already be in grayscale mode
+> library (ggplot2)
+> bdf <-as.data.frame(fprint6)
+> head(bdf,3)
+  x y     value
+1 1 1 0.7647059
+2 2 1 0.7647059
+3 3 1 0.7647059
+> View(fprints)
+> gr<-imgradient(fprints6, "xy")
+Error in get_gradient(im, axes, scheme) : object 'fprints6' not found
+> gr<-imgradient(fprint6, "xy")
+> plot(gr,layout="row")
+> dx <- imgradient(fprint6, "x")
+> dy <- imgradient(fprint6, "y")
+> grad.mg <- sqrt(dx^2+dy^2)
+> plot(grad.mg)
+> imhessian(grad.mg)
+Image list of size 3 
+> Hdet <- with(imhessian(grad.mg), (xx*yy - xdy^2))
+Error in eval(substitute(expr), data, enclos = parent.frame()) : 
+  object 'xdy' not found
+> Hdet <- with(imhessian(grad.mg), (xx*yy - xy^2))
+> plot(Hdet,main=determinant f6)
+Error: unexpected symbol in "plot(Hdet,main=determinant f6"
+> plot(Hdet,main="determinant f6")
+> threshold(Hdet, "99%") %>%plot(main="1% highest values")
+> lab<-threshold(Hdet, "99%") %>% label
+> plot(lab,main="labelled regions")
+> df <- as.data.frame(lab) %>% subset(value>0)
+> View(df)
+> unique(df$value)
