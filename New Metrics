@@ -23,3 +23,8 @@
 #Addition of Image Featurization
 > load("img_featurized.R")
 > printrating.dat <- cbind(printratings_dat, img_featurized)
+
+
+#Image Values and Scores DataFrame
+
+scores <- data.frame(printrating.dat$img_featurized,printrating.dat$Score.1,printrating.dat$Score.2,printrating.dat$Score.3,printrating.dat$Score.4)
