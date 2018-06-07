@@ -68,3 +68,11 @@ df <- data.frame(dist.x = c(Dx),dist.y = c(Dy), cor = c(C))
 
 library(ggplot2)
 ggplot(df,aes(dist.x,dist.y))+geom_point(aes(size=cor))
+
+
+## confirm theory with correlations
+suby <- subset(df,dist.x==0) %>% select(cor,dist.axis=dist.y) %>%   mutate(label="Correlation along y")
+subx <- subset(df,dist.y==0) %>%  select(cor,dist.axis=dist.x) %>% mutate(label="Correlation along x") 
+rbind(subx,suby) %>% ggplot(aes(dist.axis,cor,col=label))+geom_point()+geom_smooth()+labs(x="Distance along axis (x or y), pix.",y="Correlation between values",col="")
+
+## `geom_smooth()` using method = 'gam'
