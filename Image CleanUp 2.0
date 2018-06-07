@@ -1,0 +1,18 @@
+image.cleanup = function(directoryFrom = '', image.number = 0, directoryTo = ''){
+  current.print = load.image(paste(directoryFrom, image.number, '.png', sep = ""))
+  df = as.data.frame(current.print)
+  m = lm(value ~ x + y, data = df)
+  # threshold(grayscale(current.print),"13%") %>% plot
+  
+  # convert to tiff
+  #path = file.path(directoryTo)
+  path = system.file(directoryTo, paste("Cleaned Image", image.number, ".tiff", sep = " "))
+  tiff(file = path)
+  
+  title = paste("Cleaned Image", image.number, sep = " ")
+  threshold(grayscale(current.print),"13%") %>% plot
+  dev.off()
+  print("Saved Complete")
+}
+
+image.cleanup('C:/Users/nmajo/Dropbox/Fingerprints for SURE/Converted FingerprintsPNG/', 6, 'C:/Users/nmajo/Desktop')
