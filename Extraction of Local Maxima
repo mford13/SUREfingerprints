@@ -1,0 +1,70 @@
+image <- hub <- load.image(" ") %>% grayscale
+
+## denoise the image
+isoblur(image)
+
+
+## get the center values
+
+get.centers <- function(image,thr="99%")
+{
+    dt <- imhessian(image) %$% { xx*yy - xy^2 } %>% threshold(thr) %>% label
+    as.data.frame(dt) %>% subset(value>0) %>% dplyr::group_by(value) %>% dplyr::summarise(mx=mean(x),my=mean(y))
+}
+
+## detect objects at various scales
+#Compute determinant at scale "scale". 
+hessdet <- function(im,scale=1) isoblur(im,scale) %>% imhessian %$% { scale^2*(xx*yy - xy^2) }
+
+## To view the results at different scales, we can use ggplot:
+
+library(purrr)
+
+#Get a data.frame with results at scale 2, 3 and 4
+
+dat <- map_df(2:4,function(scale) hessdet(hub,scale) %>% as.data.frame %>% mutate(scale=scale))
+p <- ggplot(dat,aes(x,y))+geom_raster(aes(fill=value))+facet_wrap(~ scale)
+p+scale_x_continuous(expand=c(0,0))+scale_y_continuous(expand=c(0,0),trans=scales::reverse_trans())
+
+
+## detect minutae across scales
+
+scales <- seq(2,20,l=10)
+
+d.max <- map_il(scales,function(scale) hessdet(hub,scale)) %>% parmax
+
+## find max. value pixels ((minutae))
+
+i.max <- map_il(scales,function(scale) hessdet(hub,scale)) %>% which.parmax
+
+
+#Get a data.frame of labelled regions
+labs <- d.max %>% threshold("96%") %>% label %>% as.data.frame
+#Add scale indices
+labs <- mutate(labs,index=as.data.frame(i.max)$value)
+regs <- dplyr::group_by(labs,value) %>% dplyr::summarise(mx=mean(x),my=mean(y),scale.index=mean(index))
+p <- ggplot(as.data.frame(hub),aes(x,y))+geom_raster(aes(fill=value))+geom_point(data=regs,aes(mx,my,size=scale.index),pch=2,col="red")
+p+scale_fill_gradient(low="black",high="white")+scale_x_continuous(expand=c(0,0))+scale_y_continuous(expand=c(0,0),trans=scales::reverse_trans())
+
+
+## extract pixel values
+
+stencil <- data.frame(dx=c(0,-1,1),dy=c(0,0,0))
+
+pos.x <- round(runif(5000,11,width(image)-10)) #Use more locations
+pos.y <- round(runif(5000,11,height(image)-10))
+pos <- cbind(pos.x,pos.y)
+mat <- alply(pos,1,function(v) get.stencil(im.bw,stencil,x=v[1],y=v[2]))  %>% do.call(rbind,.)
+C <- cor(mat)
+
+val <- alply(pos,1,function(v) get.stencil(im.bw,stencil,x=v[1],y=v[2]))
+head(val,3)
+
+mat <- do.call(rbind,val)
+
+Dx <- dist(stencil$dx) %>% as.matrix #Distance along the x axis
+Dy <- dist(stencil$dy) %>% as.matrix #Distance along the y axis
+df <- data.frame(dist.x = c(Dx),dist.y = c(Dy), cor = c(C))
+
+library(ggplot2)
+ggplot(df,aes(dist.x,dist.y))+geom_point(aes(size=cor))
