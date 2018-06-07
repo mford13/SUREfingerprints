@@ -1,5 +1,5 @@
 im.g <- load.image(" ")
-im.g <- grayscale(im)
+im.g <- grayscale(im.g)
 df <- as.data.frame(im.g)
 m <- lm(value ~ x + y,data=df)
 im.f <-im.g-fitted(m)
