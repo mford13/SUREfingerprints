@@ -1,6 +1,6 @@
-plot(im)
+im/g <- load.image(" ")
 im.g <- grayscale(im)
-plot(im.g)
 df <- as.data.frame(im.g)
 m <- lm(value ~ x + y,data=df)
+im.f <-im.g-fitted(m)
 threshold(im.f,"13%") %>% plot
