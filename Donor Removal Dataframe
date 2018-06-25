@@ -4,3 +4,7 @@ printrating_dat <- na.omit(printrating_dat)
 
 #Removing Donor 0
 > printrating_dat <-printrating_dat[!(printrating_dat$donor == "0"),]
+
+
+#ExaminerDataFrame
+pdat <- melt(printratings_dat, id = c("donor","bag"), measured = c("Score.1","Score.2","Score.3","Score.4"))
