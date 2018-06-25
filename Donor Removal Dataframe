@@ -1,0 +1,6 @@
+
+#Removing Donor 4
+printrating_dat <- na.omit(printrating_dat)
+
+#Removing Donor 0
+> printrating_dat <-printrating_dat[!(printrating_dat$donor == "0"),]
