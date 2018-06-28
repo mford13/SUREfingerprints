@@ -1,0 +1,14 @@
+ #TreatmentCollumnProcess
+ 
+ treat <- printrating_dat$treatment
+ 
+ ninhydrin <-  ifelse(treat == "Ninhydrin", 1, 0)
+  mag.powder <- ifelse(treat == "Magnetic Powder", 1, 0)
+  DFO.N <- ifelse(treat == "DFO + Ninhydrin", 1, 0)
+   DFO <- ifelse(treat == "DFO", 1, 0)
+   
+   printrating_dat["ninhydrin"] = (ninhydrin)
+   printrating_dat["mag.powder"] = (mag.powder)
+   printrating_dat["DFO + Ninhydrin"] = (DFO.N)
+   printrating_dat["DFO"] = (DFO)
+   
