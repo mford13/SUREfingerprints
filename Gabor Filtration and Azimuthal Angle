@@ -4,7 +4,7 @@ library(tiff)
 library(wvtool)
 
 img <- readTIFF("/Users/mford2/Desktop/Fingerprint Img/39.tif")
-##test <- gabor.filter(x=img, lamda=8, theta=60, bw=1.5, phi=0, asp=1, disp=TRUE)
+test <- gabor.filter(x=img, lamda=8, theta=60, bw=1.5, phi=0, asp=1, disp=TRUE)
 Integ <- array()
 filt.img <- matrix(0, nrow(img), ncol(img))
 for ( i in 1:60) {
