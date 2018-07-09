@@ -2,6 +2,7 @@
 
 library(tiff)
 library(wvtool)
+library(spatialEco)
 
 img <- readTIFF("/Users/mford2/Desktop/Fingerprint Img/39.tif")
 test <- gabor.filter(x=img, lamda=8, theta=60, bw=1.5, phi=0, asp=1, disp=TRUE)
