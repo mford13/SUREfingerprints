@@ -4,7 +4,7 @@ library(tiff)
 library(wvtool)
 
 img <- readTIFF("/Users/mford2/Desktop/Fingerprint Img/39.tif")
-test <- gabor.filter(x=img, lamda=8, theta=60, bw=1.5, phi=0, asp=1, disp=TRUE)
+##test <- gabor.filter(x=img, lamda=8, theta=60, bw=1.5, phi=0, asp=1, disp=TRUE)
 Integ <- array()
 filt.img <- matrix(0, nrow(img), ncol(img))
 for ( i in 1:60) {
@@ -15,3 +15,6 @@ for ( i in 1:60) {
 image(rot90c(filt.img),col=gray(c(0:255)/255),asp=1,axes=FALSE, useRaster=TRUE)
 x <- 1:60
 plot(3*x,Integ, ty="l", ylab="integrated intensity (a.u.)", xlab="azimuthal angle (deg)")
+
+##With Min and Max
+local.min.max(Integ, dev = mean, plot = TRUE, add.points = FALSE)
