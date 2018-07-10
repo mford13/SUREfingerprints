@@ -1,0 +1,21 @@
+# cross validation
+# foo is the dataset that contains the ID information
+inds = sample(rep(1:k, length = nrow(foo)))
+pred.mat = matrix(0, nrow(foo), 1) 
+
+for (i in 1:k) {
+  cat(paste("Fold",i,"... "))
+  train = foo[inds!= i,] 
+  test = foo[inds == i,] 
+  
+  # change model accordingly
+  model = lm(mean.score ~ treatment + ID + ID2, data = train)
+  
+  # change what's in the data frame to match above model
+  pred.mat[inds == i, 1] = predict(model, data.frame(treatment = test$treatment, 
+                                                              ID = test$ID,
+                                                              ID2 = test$ID2))
+}
+
+cv.error = colMeans((pred.mat - foo$mean.score)^2)
+cv.error
