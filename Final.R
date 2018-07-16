@@ -227,7 +227,6 @@ set.seed(251)
 train_ids4 = sample(1:nrow(p.images), size = .5 * nrow(p.images))
 train4 = p.images %>% filter(1:nrow(p.images) %in% train_ids4)
 test4 = p.images %>% filter(!(1:nrow(p.images) %in% train_ids4))
-
 logfit4 = glm(quality ~ treatment + img_featurized, 
               data = train4,
               family = "binomial")
@@ -352,12 +351,6 @@ pred_y6     = 1*(pred_prob6 > .5)
 vis_data6 = data.frame(truth = test6$quality,
                        prob = pred_prob6)
 
-summary(logfit6)
-cor(P_ID2, RP_ID2)
-View(foo)
-basics = subset(foo, select = c(P_ID2, RP_ID2))
-View(basics)
-
 # overlaid ROC Curves
 roc1 = roc(vis_data1$truth, vis_data1$prob)
 roc2 = roc(vis_data2$truth, vis_data2$prob)
@@ -365,15 +358,14 @@ roc3 = roc(vis_data3$truth, vis_data3$prob)
 roc4 = roc(vis_data4$truth, vis_data4$prob)
 roc5 = roc(vis_data5$truth, vis_data5$prob)
 
-plot(roc1, col = "red", main = "ROC Curves for All Logistic Models")
+plot(roc5, col = "purple", main = "ROC Curves for All Logistic Models")
+plot(roc1, col = "red", add = TRUE )
 plot(roc2, col = "blue", add = TRUE)
 plot(roc3, col = "green", add = TRUE)
 plot(roc4, col = "orange", add = TRUE)
-plot(roc5, col = "purple", add = TRUE)
-legend("bottomright", legend = c("Base Model", "Base Model + PCA", "Base Model + kPCA", 
-                                 "Base Model + Image Feat.", 
-                                 "Base Model + Parabolic"), 
-       fill = c("red", "blue", "green", "orange", "purple"))
+legend("bottomright", legend = c("New Numeric Visualization", "Base Model", "PCA", 
+                                 "kPCA", "Moving Window"), 
+       fill = c("purple", "red", "blue", "green", "orange"))
 
 # trees
 colnames(foo)[colnames(foo) == "P_ID2"] = "squared coef."
