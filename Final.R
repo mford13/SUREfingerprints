@@ -374,3 +374,25 @@ legend("bottomright", legend = c("Base Model", "Base Model + PCA", "Base Model +
                                  "Base Model + Image Feat.", 
                                  "Base Model + Parabolic"), 
        fill = c("red", "blue", "green", "orange", "purple"))
+
+# trees
+colnames(foo)[colnames(foo) == "P_ID2"] = "squared coef."
+colnames(foo)[colnames(foo) == "mag.powder"] = "magnetic powder"
+library(rpart)
+library(rpart.plot)
+treefit<- rpart(mean.score ~ `squared coef.` + RP_ID2 + ninhydrin + DFO + DFON + `magnetic powder`, 
+                method="anova", data = foo)
+plotcp(treefit)
+printcp(treefit)
+
+View(foo)
+
+treefitf = prune(treefit, cp = 0.01)
+# preferred: red
+prp(treefitf, type = 0, extra = 0, varlen = 0, faclen = 0, nn = FALSE, yesno = 0, 
+    box.palette = c("firebrick3", "tomato", "ivory"), digits = 2, font = 8, split.font = 8)
+
+# default tree
+plot(treefitf, uniform=TRUE, 
+     main="Regression Tree for Mean Score")
+text(treefitf)
